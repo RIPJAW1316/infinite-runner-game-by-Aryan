@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="build/images/la-wit-logo.png">
+
+    <title>Build A Javascript Game | IT Girls</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="build/css/styles.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+        crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./#game-art-and-media">Game Art and Media</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./#code-snippets">Code Snippets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./#resources-list">Resources</a>
+          </li>         
+          <li class="nav-item">
+            <a class="nav-link" href="game.html">Play the Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Solutions to Further Challenges</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <section class="solution-jumbo-wrapper container">
+      <div class="jumbotron solution-jumbo">
+        <h1 class="display-3 align-middle">Solutions to "Further Challenges"</h1>
+        <p class="lead">Here you will find solutions to the "Further Challenges" in the back of your booklet. Each challenge is explained below. Click the "Show Solution" button to see the code for how to solve the challenge.</p>
+      </div>
+    </section>
+    <section class="container" id="code-snippets">
+      <div class="challenge-wrapper">
+        <div class="challenge-inner-wrapper">
+          <h2>Progressive Difficulty</h2>
+          <p class="challenge-prompt">Right now, your character runs at a steady speed. But what if you want him to run a little faster as time goes on? You know how to add to a variable, and you know that our player’s speed is a variable. So how would you add to the speed variable as time went on? Tip: <code>runnerSpeed</code> doesn’t need to change much for you to notice the effect. Try increasing it by very small numbers, decimals even. </p>
+        </div>
+        <div class="solution-breakdown">
+          <p>This one is relatively simple, so we only need one line of code! Let's think about what we know and then we'll dive into solving the problem.</p>
+          <h5>What we know</h5>
+          <ul>
+            <li>The variable <code>runnerSpeed</code> controls how quickly our character runs.</li>
+            <li>We can add to a variable by using the <strong>compound assignment operator</strong>.</li>
+            <li>We want the change to be gradual as time goes on.</li>
+          </ul>
+          <br>
+          <button class="btn btn-warning toggle-one solution-toggle">Show Solution</button>
+          <div class="solution solution-one">
+          <h5>Solution</h5>
+            <p>We'll want to use the compound assignment opertator inside of the <code>draw()</code> function's <code>if(!gameOver)</code> section. We're going to it by a very small amount (<code>0.01</code>) everytime the draw function calls. The result with be a gradual speeding up. If you find that the game speeds up too quickly, you can increase it by an even smaller factor like <code>0.005</code>! Play around with the number until you find a rate that you like.</p>
+            <section class=" col-sm-12 code-snippet">
+              <div class="snippet">
+                <h4 class="snippet-title">Put this in your <code>draw()</code> function in the <code>if(!gameOver)</code> section.</h4>
+                <pre class="snippet-text">
+playerScore += 0.01;
+                </pre>
+              </div>      
+            </section><!-- /whole snippet -->
+          </div>
+        </div>
+      </div> <!-- /challenge wrapper -->
+    </section><!-- /challenge section -->
+    <section class="container" id="code-snippets">
+      <div class="challenge-wrapper">
+        <div class="challenge-inner-wrapper">
+          <h2>Mobile-Friendly Play</h2>
+          <p class="challenge-prompt">We built this game for computers with keyboards. But suppose you want to show your friends on the run? P5.js has a function call <code>touchStarted()</code> that works a lot like <code>keyWentDown()</code> but detects touchscreen touches. How would you use <code>touchStarted()</code> to make your game take touchscreen inputs? Find out more about the <code>touchStarted()</code> function at <a target="blank" href="http://p5js.org/reference/#/p5/touchStarted">http://p5js.org/reference/#/p5/touchStarted</a>.</p> 
+        </div>
+        <div class="solution-breakdown">
+          <p>This one may be a bit tricky because we're using a brand new function. Let's think about what we know about <code>keyWentDown()</code> and how we can apply what we know about it to using <code>touchStarted()</code>.</p>
+          <h5>What we know</h5>
+          <ul>
+            <li>The <code>touchStarted()</code> function measures if a player interacted with the game on the last execution of <code>draw()</code>.</li>
+            <li>We already have a function that makes the player jump with they hit the UP_ARROW key, we just need to add a new <code>touchStarted()</code> function to trigger the jump on touch.</li>
+            <li>
+            We'll need to detect touch under two circumstances.
+            <ul>
+              <li>During gameplay, when the player jumps from platform to platform.</li>
+              <li>At the game over screen, when the player wants to restart.</li>
+            </ul>
+            </li>
+          </ul>
+          <br>
+          <button class="btn btn-warning toggle-two solution-toggle">Show Solution</button>
+          <div class="solution solution-two">
+          <h5>Solution</h5>
+            <p>We'll define the actions we want to occur in a new <code>touchStarted()</code> function at the bottom of our code. We'll put the same actions as are inside of <code>jumpDetection()</code>. We'll also add a condition for if the game is over that resets the same things as the <code>newGame()</code> function. Note: According to the p5.js website, <code>touchStarted()</code> is a built-in function that is called automatically and watched for in <code>draw()</code>. This means that we don't have to call it inside of our <code>draw()</code> function because it's already taken care of.</p> 
+            <section class=" col-sm-12 code-snippet">
+              <div class="snippet">
+                <h4 class="snippet-title">Define the <code>touchStarted()</code> function at the bottom of your code like this.</h4>
+                <pre class="snippet-text">
+function touchStarted(){
+  runner.changeAnimation("jump");
+  runner.animation.rewind();
+  runner.velocity.y = -jumpPower;
+  if(gameOver){
+    platformsGroup.removeSprites();
+    backgroundTiles.removeSprites();
+    gameOver = false;
+    updateSprites(true);
+    runnerSpeed = 15;
+    runner.position.x = 50;
+    runner.position.y = 100;
+    runner.velocity.x = runnerSpeed;
+    currentPlatformLocation = -width;
+    currentBackgroundTilePosition = -width;
+    playerScore = 0;
+  }
+}
+                </pre>
+              </div>      
+            </section><!-- /whole snippet -->
+          </div>
+        </div>
+      </div> <!-- /challenge wrapper -->
+    </section>
+    <section class="container" id="code-snippets">
+      <div class="challenge-wrapper">
+        <div class="challenge-inner-wrapper">
+          <h2>Jumping Sounds</h2>
+          <p class="challenge-prompt">Keen observers may have noticed yet another variable we haven’t addressed. The variable <code>jumpSound</code> holds a cute little sound for when our character jumps. You know how to play sounds. You know how to stop sounds. Where should you put the commands for playing and stopping <code>jumpSound</code>? Hint: We only need to hear the sound when the character jumps.</p>
+        </div>
+        <div class="solution-breakdown">
+          <p>This one is pretty straight forward. Let's dive right in.</p>
+          <h5>What we know</h5>
+          <ul>
+            <li>We can make a sound play with the name of the variable the sound is in followed by <code>.play()</code>.</li>
+            <li>We can make a sound stop with the name of the variable the sound is in followed by <code>.stop()</code>.</li>
+            <li>We have a functions that detect jumping and make the character jump.</li>
+          </ul>
+          <br>
+          <button class="btn btn-warning toggle-three solution-toggle">Show Solution</button>
+          <div class="solution solution-three">
+          <h5>Solution</h5>
+            <p>We'll add playing <code>jumpSound</code> to the list of instructions for <code>jumpDetection()</code> and <code>touchStarted()</code>. Next, we'll add a command to stop playing <code>jumpSound</code> when our player hits the ground.</p> 
+            <section class=" col-sm-12 code-snippet">
+              <div class="snippet">
+                <h4 class="snippet-title">Add this to the top of your <code>jumpDetection()</code> and <code>touchStarted()</code> functions.</h4>
+                <pre class="snippet-text">
+jumpSound.play();
+                </pre>
+              </div>   
+              <div class="snippet">
+                <h4 class="snippet-title">Add this at the top of your <code>solidGround()</code>function.</h4>
+                <pre class="snippet-text">
+jumpSound.stop();
+                </pre>
+              </div><!-- /var sub-snippet-->   
+            </section><!-- /whole snippet -->
+          </div>
+        </div>
+      </div> <!-- /challenge wrapper -->
+    </section>
+    <footer>
+      <div class="container container-fluid">
+        <div class="row">
+          <div class="col-md-8 copy">
+            <p>This workshop is a part of LaWIT’s IT Girls program. IT Girls is an annual creative computing workshop geared toward East Baton Rouge Parish middle school girls held in the spring. The program provides an opportunity for female students to learn coding fundamentals directly from local STEM professionals, which provides a unique opportunity to actively explore and gain greater insight into the high-demand field of computer programming. The goal of IT Girls is to increase student interest and preparedness for the STEM workforce and Louisiana’s knowledge economy.</p>
+          </div>
+          <div class="col-md-4 logos">
+            <img class='lawit-logo' src="build/images/la-wit-logo.png" alt="laWIT Logo" />
+            <img src="build/images/it-girls-logo.jpg" alt="IT Girls Logo" class="itgirls-logo">
+          </div>
+        </div>
+      </div>
+    </footer>
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $('.solution').hide();
+
+        $('.toggle-one').click(function(){
+          $('.toggle-one').text(function(_, text){
+            return text === 'Show Solution' ? "Hide Solution" : "Show Solution"
+          });
+          $('.solution-one').toggle(400);
+        });
+
+        $('.toggle-two').click(function(){
+          $('.toggle-two').text(function(_, text){
+            return text === 'Show Solution' ? "Hide Solution" : "Show Solution"
+          });
+          $('.solution-two').toggle(400);
+        });
+
+        $('.toggle-three').click(function(){
+          $('.toggle-three').text(function(_, text){
+            return text === 'Show Solution' ? "Hide Solution" : "Show Solution"
+          });
+          $('.solution-three').toggle(400);
+        });
+      });
+
+      
+    </script>
+
+
+    </body>
+    </html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="build/images/la-wit-logo.png">
+
+    <title>Build A Javascript Game | IT Girls</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="build/css/styles.css">
+
+    <style>
+      body {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+      }
+
+      p {
+        max-width: 700px;
+        text-align: center;
+      }
+      p.instructions {
+        margin-top: 60px;
+      }
+      p a {
+        font-weight: bold;
+        text-decoration: none;
+        color: purple;
+      }
+      p a:hover {
+        text-decoration: underline;
+        color: #4d004d;
+      }
+
+      .loading-screen {
+        background: black;
+        min-width: 840px;
+        min-height: 390px;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 2rem;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        align-text: center;
+      }
+      .loading-screen p {
+        -webkit-animation: pulse 1s linear 2s infinite alternate;
+                animation: pulse 1s linear 2s infinite alternate;
+      }
+      @-webkit-keyframes pulse {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes pulse {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="./">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./#game-art-and-media">Game Art and Media</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./#code-snippets">Code Snippets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./#resources-list">Resources</a>
+          </li>         
+          <li class="nav-item">
+            <a class="nav-link" href="#">Play the Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="solutions.html">Solutions to Further Challenges</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="p5_loading" class='loading-screen'><p>LOADING</p></div>
+    
+    <script src='https://la-wit.github.io/build-an-infinite-runner/build/js/lib/p5.js'></script>
+    <script src='https://la-wit.github.io/build-an-infinite-runner/build/js/lib/p5.play.js'></script>
+    <script src='https://la-wit.github.io/build-an-infinite-runner/build/js/lib/p5.sound.js'></script>
+    <script src='https://la-wit.github.io/build-an-infinite-runner/build/js/lib/p5.dom.js'></script>
+
+    <script>
+    var runner;
+    var runningAnimation;
+    var jumpingAnimation;
+    var gameBackground;
+    var platformBackground;
+    var gameFont;
+    var gameMusic;
+    var gameOverSound;
+    var gameOver = false;
+    var platformsGroup;
+    var currentPlatformLocation;
+    var gravity;
+    var jumpPower = 15;
+    var runnerSpeed = 15;
+    var currentBackgroundTilePosition;
+    var backgroundTiles;
+    var playerScore = 0;
+    var jumpSound;
+
+    function preload() {
+      jumpingAnimation = loadAnimation(
+        'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/jump00.png',
+        'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/jump01.png'
+      );
+      runningAnimation = loadAnimation(
+        'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run00.png',
+        'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run01.png',
+        'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run02.png',
+        'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run03.png'
+      );
+      gameBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/defaultBackground.png');
+      platformBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/defaultPlatform.png');
+      gameFont = loadFont('https://la-wit.github.io/build-an-infinite-runner/build/fonts/ARCADE_R.TTF');
+      gameMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/generic-game-loop-4.mp3');
+      gameOverSound = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/over.mp3');
+      jumpSound = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/jump07.mp3');
+    }
+
+    function setup() {
+      var instructions = createP('Press the <strong>UP ARROW</strong>, <strong>click</strong>, or <strong>tap</strong> to jump.');
+      instructions.addClass('instructions');
+      createCanvas(840, 390);
+      createP("This game is a part of <a target='_blank' href='http://www.la-wit.org/'>La-WIT</a>'s annual <strong>IT Girls</strong> program. IT Girls is a creative computing workshop geared toward East Baton Rouge Parish middle school girls held in the spring. The program provides an opportunity for female students to learn coding fundamentals directly from local STEM professionals, which provides a unique opportunity to actively explore and gain greater insight into the high-demand field of computer programming. The goal of IT Girls is to increase student interest and preparedness for the STEM workforce and Louisiana’s knowledge economy.");
+      createP('Like this game? Click <a target="_blank" href="http://la-wit.github.io/build-an-infinite-runner">here</a> to learn how to make it!');
+      runner = createSprite(50, 100, 25, 40);
+      runner.depth = 4;
+      runner.addAnimation('jump', jumpingAnimation);
+      runner.addAnimation('run', runningAnimation);
+      runner.setCollider("rectangle", 0, 0, 10, 41);
+      platformsGroup = new Group();
+      gravity = 1;
+      currentPlatformLocation = -width;
+      currentBackgroundTilePosition = -width;
+      backgroundTiles = new Group();
+      gameMusic.play();
+
+    }
+
+    function draw() {
+      if (!gameOver) {
+        runner.velocity.y += gravity;
+        background(200);
+        addNewPlatforms();
+        removeOldPlatforms();
+        runner.collide(platformsGroup, solidGround);
+        jumpDetection();
+        runnerSpeed += 0.01;
+        runner.velocity.x = runnerSpeed;
+        camera.position.x = runner.position.x + 300;
+        addNewBackgroundTiles();
+        removeOldBackgroundTiles();
+        fallCheck();
+        drawSprites();
+        updateScore();
+      }
+
+      if (gameOver) {
+        updateSprites(false);
+        gameOverText();
+        newGame();
+      }
+    }
+    // We'll define our own functions below here.
+    function addNewPlatforms() {
+      if (platformsGroup.length < 5) {
+        var currentPlatformLength = 1132;
+        var platform = createSprite((currentPlatformLocation * 1.3), random(300, 400), 1132, 336);
+
+        currentPlatformLocation += currentPlatformLength;
+        platform.addAnimation('default', platformBackground);
+        platform.depth = 3;
+        platformsGroup.add(platform);
+      }
+    }
+
+    function solidGround() {
+      runner.velocity.y = 0;
+      runner.changeAnimation("run");
+      jumpSound.stop();
+      if (runner.touching.right) {
+        runner.velocity.x = 0;
+        runner.velocity.y += 30;
+      }
+    }
+
+    function jumpDetection() {
+      if (keyWentDown(UP_ARROW)) {
+        jumpSound.play();
+        runner.changeAnimation("jump");
+        runner.animation.rewind();
+        runner.velocity.y = -jumpPower;
+      }
+    }
+
+    function touchStarted() {
+      jumpSound.play();
+      runner.changeAnimation("jump");
+      runner.animation.rewind();
+      runner.velocity.y = -jumpPower;
+      if (gameOver) {
+        platformsGroup.removeSprites();
+        backgroundTiles.removeSprites();
+        gameOver = false;
+        updateSprites(true);
+        runnerSpeed = 15;
+        runner.position.x = 50;
+        runner.position.y = 100;
+        runner.velocity.x = runnerSpeed;
+        currentPlatformLocation = -width;
+        currentBackgroundTilePosition = -width;
+        playerScore = 0;
+        gameOverSound.stop();
+        gameMusic.play();
+      }
+    }
+
+    function removeOldPlatforms() {
+      for (var i = 0; i < platformsGroup.length; i++) {
+        if ((platformsGroup[i].position.x) < runner.position.x - width) {
+          platformsGroup[i].remove();
+        }
+      }
+    }
+
+    function addNewBackgroundTiles() {
+      if (backgroundTiles.length < 3) {
+        currentBackgroundTilePosition += 839;
+        var bgLoop = createSprite(currentBackgroundTilePosition, height / 2, 840, 390);
+        bgLoop.addAnimation('bg', gameBackground);
+        bgLoop.depth = 1;
+        backgroundTiles.add(bgLoop);
+      }
+    }
+
+    function removeOldBackgroundTiles() {
+      for (var i = 0; i < backgroundTiles.length; i++) {
+        if ((backgroundTiles[i].position.x) < runner.position.x - width) {
+          backgroundTiles[i].remove();
+        }
+      }
+    }
+
+    function fallCheck() {
+      if (runner.position.y > height) {
+        gameOver = true;
+        gameMusic.stop();
+        gameOverSound.play();
+      }
+    }
+
+    function gameOverText() {
+      background(0, 0, 0, 10);
+      fill('white');
+      stroke('black');
+      textAlign(CENTER);
+      textFont(gameFont);
+      strokeWeight(2);
+      textSize(90);
+      strokeWeight(10);
+      text("GAME OVER", camera.position.x, camera.position.y);
+
+      textSize(15);
+      text("Jump to try again", camera.position.x, camera.position.y + 100);
+
+      textSize(20);
+      text("You ran " + playerScore + ' yards!', camera.position.x, camera.position.y + 50);
+    }
+
+    function newGame() {
+      if ((keyWentDown(UP_ARROW))) {
+        platformsGroup.removeSprites();
+        backgroundTiles.removeSprites();
+        gameOver = false;
+        updateSprites(true);
+        runnerSpeed = 15;
+        runner.position.x = 50;
+        runner.position.y = 100;
+        runner.velocity.x = runnerSpeed;
+        currentPlatformLocation = -width;
+        currentBackgroundTilePosition = -width;
+        playerScore = 0;
+        gameOverSound.stop();
+        gameMusic.play();
+      }
+    }
+
+    function updateScore() {
+      if (frameCount % 60 === 0) {
+        playerScore++;
+      }
+      fill('white');
+      textFont(gameFont);
+      strokeWeight(2);
+      stroke('black');
+      textSize(20);
+      textAlign(CENTER);
+      text(playerScore, camera.position.x + 350, camera.position.y + 160);
+    }
+    </script>
+
+
+
+
+
+
+    </body>
+    </html>

@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="build/images/la-wit-logo.png">
+
+    <title>Build A Javascript Game | IT Girls</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="build/css/styles.css">
+    <!--     highlight.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+        <script>hljs.initHighlightingOnLoad();</script>
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+        crossorigin="anonymous"></script>
+
+  </head>
+
+  <body>
+
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#game-art-and-media">Game Art and Media</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#code-snippets">Code Snippets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#resources-list">Resources</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact Keisha</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="game.html">Play the Game</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="solutions.html">Solutions to Further Challenges</a>
+          </li>
+<!--           <li class="nav-item">
+            <a class="nav-link" target="_blank" href="https://www.surveymonkey.com/r/itgirls2018pre">Take the Pre-Class Survey</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    <div id="home" class="jumbotron main-jumbo jumbotron-fluid">
+      <h1 class="display-3 align-middle">Building an Infinite Runner in P5.js</h1>
+    </div>
+    <section class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <h1>Welcome to IT Girls!</h1>
+          <p>Are you interested in computer programming, web development, game development, or just making fun things? Have you done a bit of programming with Scratch, Snap!, or Blocky and want to transition into a typed programming experience? This class is designed to help you do just that! Don’t worry if this is your first time programming! This is a beginner-friendly exercise that will get you up and programming right away!</p>
+          <h2>You Will Learn</h2>
+          <ul>
+            <li>Basic JavaScript syntax and structure</li>
+            <li>How to manipulate game sprites</li>
+            <li>How to draw on the HTML canvas</li>
+            <li>How to use JavaScript libraries to make programming easier</li>
+          </ul>
+          <p>To get started, you can click <a target='blank' href="https://la-wit.github.io/build-an-infinite-runner/build/docs/it-girls-instructional-booklet.pdf">here</a> to get the booklet for this workshop. You can download and print it or view it online. Follow along to build an infinite runner game in JavaScript! Want to see what you’ll be making? Click <a href="game.html">here</a> to play the game! </p>
+        </div>
+        <div class="col-md-3">
+          <a href="https://la-wit.github.io/build-an-infinite-runner/build/docs/it-girls-instructional-booklet.pdf" target='blank' class="book-link-text"><h3>Download the Instruction Booklet</h3></a>
+          <a href="https://la-wit.github.io/build-an-infinite-runner/build/docs/it-girls-instructional-booklet.pdf" target='blank' class="book-link"><img class='book-cover' src="build/images/book-thumb.png" alt="Book Cover"></a>
+        </div>
+      </div>
+    </section><!-- /home -->
+    <section id="game-art-and-media" class="container">
+      <div class="jumbotron">
+        <h1 class="display-3">Game Art and Media</h1>
+        <p class="lead">Here you will find all of the artwork, sounds, and music referenced in the booklet. You can just copy and paste the necessary code into your <code>preload()</code> function. If you ever feel like changing the theme of your game, just replace the code in the <code>preload()</code> function with your new choice.</p>
+      </div><!-- /jumbotron -->
+      <h1 class="subsection-title">Runner Characters</h1>
+      <div class="row characters">
+        
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner robot"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Robot</h3>
+              <button class="btn btn-warning" id="robot-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner littleGirl"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Little Girl</h3>
+              <button class="btn btn-warning" id="little-girl-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner redNinja"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Red Ninja</h3>
+              <button class="btn btn-warning" id="red-ninja-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 art-code-snippet code-snippet" id='robot-codeblock'>
+          <div class=" col-sm-12 code-snippet">
+            <h3 class="section-title">Robot</h3>
+            <div class="snippet">
+              <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Robot as your character.</h4>
+              <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/jump09.png'    
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/robot/run07.png'   
+);
+              </code></pre>
+            </div><!-- /artwork code-->
+          </div><!-- /whole snippet -->
+        </div>
+        <div class="col-md-12 art-code-snippet code-snippet" id='little-girl-codeblock'>
+          <div class=" col-sm-12 code-snippet">
+            <h3 class="section-title">Little Girl</h3>
+            <div class="snippet">
+              <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Little Girl as your character.</h4>
+              <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/jump01.png' 
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/littleGirl/run03.png'
+);
+              </code></pre>
+            </div><!-- /artwork code-->
+          </div><!-- /whole snippet -->
+        </div>
+        <div class="col-md-12 art-code-snippet code-snippet" id='red-ninja-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Red Ninja</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Red Ninja as your character.</h4>
+                      <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/jump09.png'    
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/redNinja/run09.png'    
+);
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner purpleNinja"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Purple Ninja</h3>
+              <button class="btn btn-warning" id="purple-ninja-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner kitty"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Kitty</h3>
+              <button class="btn btn-warning" id="kitty-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner puppy"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Puppy</h3>
+              <button class="btn btn-warning" id="puppy-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 art-code-snippet code-snippet" id='purple-ninja-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Purple Ninja</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Purple Ninja as your character.</h4>
+                      <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/jump09.png'    
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/purpleNinja/run09.png'    
+);
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+                <div class="col-md-12 art-code-snippet code-snippet" id='kitty-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Kitty</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Kitty as your character.</h4>
+                      <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/jump01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/jump02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/jump03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/jump05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/jump06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/jump07.png'   
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/kitty/run07.png'  
+);
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+                <div class="col-md-12 art-code-snippet code-snippet" id='puppy-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Puppy</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Puppy as your character.</h4>
+                      <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/jump07.png'   
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/puppy/run07.png'  
+);
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner adventureWoman"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Adventure Woman</h3>
+              <button class="btn btn-warning" id="adventure-woman-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner adventureMan"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Adventure Man</h3>
+              <button class="btn btn-warning" id="adventure-man-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper runner leprechaun"><div class="character-sprite"></div></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Leprechaun</h3>
+              <button class="btn btn-warning" id="leprechaun-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 art-code-snippet code-snippet" id='adventure-woman-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Adventure Woman</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Adventure Woman as your character.</h4>
+                      <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/jump09.png'    
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureWoman/run07.png'   
+);
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+                <div class="col-md-12 art-code-snippet code-snippet" id='adventure-man-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Adventure Man</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Adventure Man as your character.</h4>
+                      <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/jump09.png'    
+);
+runningAnimation = loadAnimation( 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run03.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/Run04.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run05.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run06.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run07.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run08.png',     
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/adventureMan/run09.png'    
+);
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+                  <div class="col-md-12 art-code-snippet code-snippet" id='leprechaun-codeblock'>
+          <div class=" col-sm-12 code-snippet">
+            <h3 class="section-title">Leprechaun</h3>
+            <div class="snippet">
+              <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Leprechaun as your character.</h4>
+              <pre class="snippet-text"><code>
+jumpingAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/leprechaun/jump00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/leprechaun/jump01.png' 
+);
+runningAnimation = loadAnimation(
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/leprechaun/run00.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/leprechaun/run01.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/leprechaun/run02.png', 
+  'https://la-wit.github.io/build-an-infinite-runner/build/images/sprites/leprechaun/run03.png'
+);
+              </code></pre>
+            </div><!-- /artwork code-->
+          </div><!-- /whole snippet -->
+                </div>
+      </div><!-- /row characters -->
+      <h1 class="subsection-title">Environment Art</h1>
+      <div class="row backgrounds">
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper background mountain"><img src="build/images/environments/defaultThumb.png" height="300" width="600" alt="background-image" class="background-thumbnail" /></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Mountain Scene</h3>
+              <button class="btn btn-warning" id="mountain-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper background industrial"><img src="build/images/environments/industrialThumb.png" height="300" width="600" alt="background-image" class="background-thumbnail" /></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Industrial Scene</h3>
+              <button class="btn btn-warning" id="industrial-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="game-art-card col-md-4">
+          <div class="game-art-inner-wrapper">
+            <div class="game-art-image-wrapper background desert"><img src="build/images/environments/desertThumb.png" height="300" width="600"  alt="background-image" class="background-thumbnail" /></div>
+            <div class="game-art-text">
+              <h3 class="game-art-name">Desert Scene</h3>
+              <button class="btn btn-warning" id="desert-toggle">Show Code</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 art-code-snippet code-snippet" id='mountain-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Mountain Scene</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Mountain Scene.</h4>
+                      <pre class="snippet-text"><code>
+gameBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/defaultBackground.png');
+platformBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/defaultPlatform.png');
+gameFont = loadFont('https://la-wit.github.io/build-an-infinite-runner/build/fonts/ARCADE_R.TTF');
+gameMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/generic-game-loop-4.mp3');
+gameOverMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/over.mp3');
+jumpSound = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/jump07.mp3');
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+                <div class="col-md-12 art-code-snippet code-snippet" id='desert-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Desert Scene</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Desert Scene.</h4>
+                      <pre class="snippet-text"><code>
+gameBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/desertBackground.png');
+platformBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/desertPlatform.png');
+gameFont = loadFont('https://la-wit.github.io/build-an-infinite-runner/build/fonts/ARCADE_R.TTF');
+gameMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/generic-game-loop-4.mp3');
+gameOverMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/over.mp3');
+jumpSound = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/jump07.mp3');
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+                <div class="col-md-12 art-code-snippet code-snippet" id='industrial-codeblock'>
+                  <div class=" col-sm-12 code-snippet">
+                    <h3 class="section-title">Industrial Scene</h3>
+                    <div class="snippet">
+                      <h4 class="snippet-title">Put this into your <code>preload()</code> function to select the Industrial Scene.</h4>
+                      <pre class="snippet-text"><code>
+gameBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/industrialBackground.png');
+platformBackground = loadImage('https://la-wit.github.io/build-an-infinite-runner/build/images/environments/industrialPlatform.png');
+gameFont = loadFont('https://la-wit.github.io/build-an-infinite-runner/build/fonts/ARCADE_R.TTF');
+gameMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/generic-game-loop-4.mp3');
+gameOverMusic = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/over.mp3');
+jumpSound = loadSound('https://la-wit.github.io/build-an-infinite-runner/build/sounds/jump07.mp3');
+                      </code></pre>
+                    </div><!-- /artwork code-->
+                  </div><!-- /whole snippet -->
+                </div>
+      </div><!-- /row backgrounds -->
+    </section><!-- /game-art-and-media -->
+    <section class="container" id="code-snippets">
+      <div class="jumbotron">
+        <h1 class="display-3">Code Snippets</h1>
+        <p class="lead">In this section, you'll find code snippets to make following the lesson easier. Just copy the text you need and paste into your code.</p>
+      </div><!--   /jumbotron -->
+      <div class="row">
+        <h2 class="main-section-title">Setting Up Our P5.js Environment</h2>
+        <br>
+        <section class=" col-sm-12 code-snippet">
+<!--           <h3 class="section-title">Linking to P5.js</h3> -->
+         <div class="snippet">
+           <h4 class="snippet-title">Add this to your <code>index.html</code> file.</h4>
+            <pre class="snippet-text"><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+  &lt;title&gt;IT Girls 2018&lt;/title&gt;
+
+  &lt;script type=&quot;text/javascript&quot; src=&quot;https://la-wit.github.io/build-an-infinite-runner/build/js/lib/p5.js&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;text/javascript&quot; src=&quot;https://la-wit.github.io/build-an-infinite-runner/build/js/lib/p5.play.js&quot;&gt;&lt;/script&gt;
+  &lt;script type=&quot;text/javascript&quot; src=&quot;https://la-wit.github.io/build-an-infinite-runner/build/js/lib/p5.sound.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script&gt;
+  
+    function setup(){
+      createCanvas(840,390);
+      background(200, 200, 200);
+    }
+    function draw(){
+
+    }
+    
+  &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->                  
+        </section><!-- /whole snippet -->
+        <h2 class="main-section-title">Introduction to P5.js</h2>
+        <br>
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Setting Up Our P5.js Structure </h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in the <code>&lt;script&gt;</code> tag of your <code>index.html</code> file..</h4>
+            <pre class="snippet-text"><code>
+function setup(){
+
+}
+function draw(){
+
+}
+// We'll define our own functions below here.
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /sub-snippet-->
+        </section><!-- /whole code snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Creating the Canvas</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>setup()</code> function.</h4>
+            <pre class="snippet-text"><code>
+createCanvas(840,390);
+background(200, 200, 200);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /sub-snippet-->
+        </section><!-- /whole code snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Drawing a Circle</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+ellipse(100,200,30,30);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /sub-snippet-->
+        </section><!-- /whole code snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Giving the Circle Color</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+fill(23,55,100);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /sub-snippet-->
+        </section><!-- /whole code snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Follow The Cursor</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Replace the <code>ellipse</code> function with this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+ellipse(mouseX,mouseY,30,30);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /sub-snippet-->
+        </section>
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Automatic Movement</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var circlePosition;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>setup()</code> function.</h4>
+            <pre class="snippet-text"><code>
+circlePosition = 100;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Replace the <code>ellipse()</code> function with this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+ellipse(circlePosition, 200,30,30);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+          <hr>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+circlePosition = circlePosition + 1;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /sub-snippet-->
+          <hr>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+background(200,200,200);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /sub-snippet-->
+        </section><!-- /whole code snippet -->
+        <h2 class='main-section-title'>Using P5.play to Code Your Game</h2>
+        <h4 class="section-subtitle">Clear out both your <code>setup()</code> and <code>draw()</code> functions and delete your <code>circlePosition</code> variable when you start this section.</h4>
+        <br>
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Follow The Cursor</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var runner;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>setup()</code> function.</h4>
+            <pre class="snippet-text"><code>
+createCanvas(840,390);
+runner = createSprite(50,100,25,40);
+runner.depth = 4;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+background(200);
+drawSprites();
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+        </section>
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">The Preload Function</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Add this function before the draw()</h4>
+            <pre class="snippet-text"><code>
+function preload(){
+
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /new user-Declared function-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Adding Images and Animations</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare these variables at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var runningAnimation;
+var jumpingAnimation;
+var gameBackground;
+var platformBackground;
+var gameFont;
+var gameMusic;
+var gameOverMusic;
+var jumpSound;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>setup()</code> function.</h4>
+            <pre class="snippet-text"><code>
+runner.addAnimation('jump', jumpingAnimation);
+runner.addAnimation('run', runningAnimation);
+runner.setCollider("rectangle", 0,0,10,41);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Conditional Statements</h3>
+          <div class="snippet">
+           <h4 class="snippet-title">Replace the code in your <code>draw()</code> function with this.</h4>
+           <pre class="snippet-text"><code>
+if(!gameOver){
+    background(200);
+    drawSprites();
+  }
+
+  if(gameOver){
+
+  }
+           </code></pre>
+           <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+         </div><!-- /draw sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Is the Game Over?</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare and assign this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var gameOver = false;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h2 class="main-section-title">Making Our Own Functions</h2>
+          <br>
+          <h3 class="section-title">Adding the Platforms Group</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var platformsGroup;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>setup()</code> function.</h4>
+            <pre class="snippet-text"><code>
+platformsGroup = new Group;
+            </code></pre>
+<!--             <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Adding Platforms to the Game</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var currentPlatformLocation = -width;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+          <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+          <pre class="snippet-text"><code>
+function addNewPlatforms(){
+  if(platformsGroup.length &lt; 5){
+    var currentPlatformLength = 1132;
+    var platform = createSprite((currentPlatformLocation * 1.3), random(300,400), 1132, 336);
+    platform.collide(runner);
+    currentPlatformLocation += currentPlatformLength;
+    platform.addAnimation('default', platformBackground);
+    platform.depth = 3;
+    platformsGroup.add(platform);
+  }
+}
+          </code></pre>
+          <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+        </div><!-- /user-Declared sub-snippet-->
+        <div class="snippet">
+          <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+          <pre class="snippet-text"><code>
+addNewPlatforms();
+          </code></pre>
+          <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+        </div><!-- /draw sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Adding Physics</h3>
+          <div class="snippet">
+          <h4 class="snippet-title">Declare this variable at the top of your code</h4>
+          <pre class="snippet-text"><code>
+var gravity = 1;
+          </code></pre>
+          <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+        </div><!-- /var sub-snippet-->
+        <div class="snippet">
+          <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+          <pre class="snippet-text"><code>
+runner.velocity.y += gravity;
+          </code></pre>
+          <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+        </div><!-- /draw sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Collision Detection</h3>
+          <div class="snippet">
+           <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+           <pre class="snippet-text"><code>
+runner.collide(platformsGroup, solidGround);
+           </code></pre>
+           <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+         </div><!-- /draw sub-snippet-->
+         <div class="snippet">
+         <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+         <pre class="snippet-text"><code>
+function solidGround(){
+  runner.velocity.y = 0;
+  runner.changeAnimation("run");
+  if(runner.touching.right){
+    runner.velocity.x = 0;
+    runner.velocity.y+= 30;
+  }
+}
+         </code></pre>
+         <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+       </div><!-- /user-Declared sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Jumping</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare and assign this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var jumpPower = 15;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+           <div class="snippet">
+             <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+             <pre class="snippet-text"><code>
+jumpDetection();
+             </code></pre>
+             <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+           </div><!-- /draw sub-snippet-->
+             <div class="snippet">
+               <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+               <pre class="snippet-text"><code>
+function jumpDetection(){
+  if(keyWentDown(UP_ARROW)){
+    runner.changeAnimation("jump");
+    runner.animation.rewind();
+    runner.velocity.y = -jumpPower;
+  }
+}
+               </code></pre>
+               <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+             </div><!-- /user-Declared sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Running</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare and assign this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var runnerSpeed = 15;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+runner.velocity.x = runnerSpeed;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">The Virtual Camera</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+camera.position.x = runner.position.x + 300;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Garbage Collection</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+removeOldPlatforms();
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+            <pre class="snippet-text"><code>
+function removeOldPlatforms(){
+  for(var i = 0; i &lt; platformsGroup.length; i++){
+      if((platformsGroup[i].position.x) &lt; runner.position.x-width){
+        platformsGroup[i].remove();
+    }
+  }
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /user-Declared sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Background Art</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare these variables at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var currentBackgroundTilePosition;
+var backgroundTiles;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>setup()</code> function.</h4>
+            <pre class="snippet-text"><code>
+currentBackgroundTilePosition = -width;
+backgroundTiles = new Group;
+            </code></pre>
+<!--             <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+addNewBackgroundTiles();
+removeOldBackgroundTiles();
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Declare these functions at the bottom of your code</h4>
+            <pre class="snippet-text"><code>
+function addNewBackgroundTiles(){
+  if(backgroundTiles.length &lt; 3){
+    currentBackgroundTilePosition += 839;
+    var bgLoop = createSprite(currentBackgroundTilePosition, height/2, 840, 390);
+    bgLoop.addAnimation('bg', gameBackground);
+    bgLoop.depth = 1;
+    backgroundTiles.add(bgLoop);
+  }
+}
+
+function removeOldBackgroundTiles(){
+  for(var i = 0; i &lt; backgroundTiles.length; i++){
+      if((backgroundTiles[i].position.x) &lt; runner.position.x-width){
+        backgroundTiles[i].remove();
+    }
+  }
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /user-Declared sub-snippet-->
+        </section><!-- /whole snippet -->
+        <h2 class="main-section-title">Adding a Lose Condition</h2>
+        <br>
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Checking for Falls</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+fallCheck();
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+            <pre class="snippet-text"><code>
+function fallCheck(){
+  if(runner.position.y > height){
+      gameOver = true;
+    }
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /user-Declared sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Adding Game Over Text</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+gameOverText();
+updateSprites(false);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+            <pre class="snippet-text"><code>
+function gameOverText(){
+    background(0,0,0,10);
+    fill('white');
+    stroke('black')
+    textAlign(CENTER);
+    textFont(gameFont);
+
+    strokeWeight(2);
+    textSize(90);
+    strokeWeight(10);
+    text("GAME OVER", camera.position.x, camera.position.y);
+
+    textSize(15);
+    text("Jump to try again", camera.position.x, camera.position.y + 100);
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /user-Declared sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Restarting the Game</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+            <pre class="snippet-text"><code>
+if(keyWentDown(UP_ARROW)){
+  newGame();
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+            <pre class="snippet-text"><code>
+function newGame(){
+  platformsGroup.removeSprites();
+  backgroundTiles.removeSprites();
+  gameOver = false;
+  updateSprites(true);
+  runnerSpeed = 15;
+  runner.position.x = 50;
+  runner.position.y = 100;
+  runner.velocity.x = runnerSpeed;
+  currentPlatformLocation = -width;
+  currentBackgroundTilePosition = -width;
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+        </section><!-- /whole snippet -->
+        <h2 class="main-section-title">Adding the Finishing Touches</h2>
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Point Counter</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Declare this variable at the top of your code</h4>
+            <pre class="snippet-text"><code>
+var playerScore = 0;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+          <div class="snippet">
+          <h4 class="snippet-title">Put this in your <code>draw()</code> function.</h4>
+          <pre class="snippet-text"><code>
+updateScore();
+          </code></pre>
+          <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+        </div><!-- /draw sub-snippet-->
+        <p class="special-note">*Be sure to put this function <em>after</em> the <code>drawSprites()</code> function or the code won't work.</p>
+        <div class="snippet">
+          <h4 class="snippet-title">Declare this function at the bottom of your code</h4>
+          <pre class="snippet-text"><code>
+function updateScore(){
+  if(frameCount % 60 === 0){
+    playerScore++;
+  }
+  fill('white');
+  textFont(gameFont);
+  strokeWeight(2);
+  stroke('black');
+  textSize(20);
+  textAlign(CENTER);
+  text(playerScore, camera.position.x + 350, camera.position.y + 160);
+}
+          </code></pre>
+          <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+        </div><!-- /user-Declared sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Updating Previous Functions</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this at the bottom of your <code>gameOverText()</code> function.</h4>
+            <pre class="snippet-text"><code>
+textSize(20);
+text("You ran " + playerScore + ' yards!', camera.position.x, camera.position.y + 50);
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>newGame()</code> function.</h4>
+            <pre class="snippet-text"><code>
+playerScore = 0;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Adding Sound</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>setup()</code> function.</h4>
+            <pre class="snippet-text"><code>
+gameMusic.play();
+            </code></pre>
+<!--             <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>fallCheck()</code> function.</h4>
+            <pre class="snippet-text"><code>
+gameMusic.stop();
+gameOverMusic.play();
+            </code></pre>
+<!--             <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>newGame()</code> function.</h4>
+            <pre class="snippet-text"><code>
+gameOverMusic.stop();
+gameMusic.play();
+            </code></pre>
+<!--             <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /setup sub-snippet-->                  
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Custom Loading Screen</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>HTML</code> section of your Codepen Window.</h4>
+            <pre class="snippet-text"><code>
+&lt;div id="p5_loading" class='loading-screen'&gt;&lt;p&gt;LOADING&lt;/p&gt;&lt;/div&gt;
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /draw sub-snippet-->
+        </section><!-- /whole snippet -->
+        <section class=" col-sm-12 code-snippet">
+          <h3 class="section-title">Styling Your Webpage</h3>
+          <div class="snippet">
+            <h4 class="snippet-title">Put this in your <code>CSS</code> section of your Codepen Window.</h4>
+            <pre class="snippet-text"><code>
+body {
+  background: #777;
+  background: url('https://la-wit.github.io/build-an-infinite-runner/build/images/bg.png') repeat;
+}
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.loading-screen {
+  background: black;
+  min-width: 840px;
+  min-height: 390px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  align-text: center;
+}
+.loading-screen p {
+  -webkit-animation: pulse 1s linear 2s infinite alternate;
+          animation: pulse 1s linear 2s infinite alternate;
+}
+@-webkit-keyframes pulse {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+            </code></pre>
+            <!-- <button class="btn btn-primary">Copy Snippet</button> -->
+          </div><!-- /var sub-snippet-->
+        </section><!-- /whole snippet -->
+      </div>
+      </section>
+    <section id="resources-list" class="container">
+      <div class="jumbotron">
+        <h1 class="display-3">Resources List</h1>
+        <p class="lead">Here you will find a list of resources for further study</p>
+      </div><!-- /jumbotron -->
+      <h4>Click the links below to get to the resources</h4>
+      <ul class='resources-ul'>
+        <li>
+          <h5>P5.js Website</h5>
+          <a href="http://p5js.org/">p5js.org</a>
+          <p>The official website for p5.js is a great resource for understanding how the library works from the built-in functions and variables to interactive examples. Poke around the website and learn a bit more about this wonderful framework!</p>
+        </li>
+        <li>
+          <h5>P5.play Website</h5>
+          <a href="http://p5play.molleindustria.org/">p5play.molleindustria.org</a>
+          <p>Here you can find great reference for the framework and great examples of how to use p5.play. Try looking at the examples pages and poking around with some of the code. You can learn a lot about how to create with the framework there.</p>
+        </li>
+        <li>
+          <h5>Daniel Shiffman’s Coding Train</h5>
+          <a href="https://goo.gl/ExROND">goo.gl/ExROND</a>
+          <p>Daniel Shiffman is a programmer who runs a wonderful YouTube channel full of great programming tutorials. He has some very good videos using p5.js that start from the ground up. The link below is to a group of playlists on his channel. Though all of the videos in this link will be about p5.js, check out some of his other videos involving Java and programming in general.</p>
+        </li>
+        <li>
+          <h5>Level Up Tutorials: How to Make Your First Website Series</h5>
+          <a href="https://goo.gl/NWzCLm ">goo.gl/NWzCLm</a>
+          <p>We didn’t focus much on HTML and CSS in this lesson. But they are very important in an internet-driven world. This video series takes you through the steps of making your very first website from the ground up. The site you’ll build with this series will be very basic but will teach you the fundamentals of web development.</p>
+        </li>
+
+      </ul>
+
+
+
+    </section>
+    <section id="contact" class="container">
+      <div class="jumbotron">
+        <h1 class="display-3">Contact Keisha</h1>
+        <p class="lead">You can email Keisha at ksp@keishasperkins.com</p>
+      </div><!-- /jumbotron -->
+    </section>
+
+
+
+    <footer>
+      <div class="container container-fluid">
+        <div class="row">
+          <div class="col-md-8 copy">
+            <p>This workshop is a part of LaWIT’s IT Girls program. IT Girls is an annual creative computing workshop geared toward East Baton Rouge Parish middle school girls held in the spring. The program provides an opportunity for female students to learn coding fundamentals directly from local STEM professionals, which provides a unique opportunity to actively explore and gain greater insight into the high-demand field of computer programming. The goal of IT Girls is to increase student interest and preparedness for the STEM workforce and Louisiana’s knowledge economy.</p>
+          </div>
+          <div class="col-md-4 logos">
+            <img class='lawit-logo' src="build/images/la-wit-logo.png" alt="laWIT Logo" />
+            <img src="build/images/it-girls-logo.jpg" alt="IT Girls Logo" class="itgirls-logo">
+          </div>
+        </div>
+      </div>
+    </footer>
+   
+
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.art-code-snippet').hide();
+
+        // Red Ninja
+        $('#red-ninja-toggle').click(function(){
+          $('.art-code-snippet:not(#red-ninja-codeblock)').hide();
+          $('.btn:not(#red-ninja-toggle)').text('Show Code');
+          $('#red-ninja-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#red-ninja-codeblock').toggle(400);
+        });
+
+        // Robot
+        $('#robot-toggle').click(function(){
+          $('.art-code-snippet:not(#robot-codeblock)').hide();
+          $('.btn:not(#robot-toggle)').text('Show Code');
+          $('#robot-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          }); 
+          $('#robot-codeblock').toggle(400);
+        });
+
+        // Leprechaun
+        $('#leprechaun-toggle').click(function(){
+          $('.art-code-snippet:not(#leprechaun-codeblock)').hide();
+          $('.btn:not(#leprechaun-toggle)').text('Show Code');
+          $('#leprechaun-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          }); 
+          $('#leprechaun-codeblock').toggle(400);
+        });
+
+        // purple ninja
+        $('#purple-ninja-toggle').click(function(){
+          $('.art-code-snippet:not(#purple-ninja-codeblock)').hide();
+          $('.btn:not(#purple-ninja-toggle)').text('Show Code');
+          $('#purple-ninja-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#purple-ninja-codeblock').toggle(400);
+        });
+
+        // puppy
+        $('#puppy-toggle').click(function(){
+          $('.art-code-snippet:not(#puppy-codeblock)').hide();
+          $('.btn:not(#puppy-toggle)').text('Show Code');
+          $('#puppy-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#puppy-codeblock').toggle(400);
+        });
+
+        // kitty
+        $('#kitty-toggle').click(function(){
+          $('.art-code-snippet:not(#kitty-codeblock)').hide();
+          $('.btn:not(#kitty-toggle)').text('Show Code');
+          $('#kitty-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#kitty-codeblock').toggle(400);
+        });
+
+        // adventure-woman
+        $('#adventure-woman-toggle').click(function(){
+          $('.art-code-snippet:not(#adventure-woman-codeblock)').hide();
+          $('.btn:not(#adventure-woman-toggle)').text('Show Code');
+          $('#adventure-woman-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#adventure-woman-codeblock').toggle(400);
+        });
+        // little-girl
+        $('#little-girl-toggle').click(function(){
+          $('.art-code-snippet:not(#little-girl-codeblock)').hide();
+          $('.btn:not(#little-girl-toggle)').text('Show Code');
+          $('#little-girl-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#little-girl-codeblock').toggle(400);
+        });
+
+        // adventure-man
+        $('#adventure-man-toggle').click(function(){
+          $('.art-code-snippet:not(#adventure-man-codeblock)').hide();
+          $('.btn:not(#adventure-man-toggle)').text('Show Code');
+          $('#adventure-man-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#adventure-man-codeblock').toggle(400);
+        });
+
+// =============Environments===================
+        
+        // industrial
+        $('#industrial-toggle').click(function(){
+          $('.art-code-snippet:not(#industrial-codeblock)').hide();
+          $('.btn:not(#industrial-toggle)').text('Show Code');
+          $('#industrial-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#industrial-codeblock').toggle(400);
+        });
+        
+        // desert
+        $('#desert-toggle').click(function(){
+          $('.art-code-snippet:not(#desert-codeblock)').hide();
+          $('.btn:not(#desert-toggle)').text('Show Code');
+          $('#desert-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#desert-codeblock').toggle(400);
+        });
+
+        // mountain
+        $('#mountain-toggle').click(function(){
+          $('.art-code-snippet:not(#mountain-codeblock)').hide();
+          $('.btn:not(#mountain-toggle)').text('Show Code');
+          $('#mountain-toggle').text(function(_, text){
+            return text === 'Show Code' ? "Hide Code" : "Show Code"
+          });
+          $('#mountain-codeblock').toggle(400);
+        });
+
+
+
+      })
+      
+    </script>
+  </body>
+</html>
